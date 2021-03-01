@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quis/row_coolumn.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(StartApp());
 
 /*
   Во flutter все состоит из виджетов.
@@ -14,7 +15,7 @@ void main() => runApp(MyApp());
 
 * */
 
-class MyApp extends StatelessWidget {
+class StartApp extends StatelessWidget {
   @override // переопрдеделение методов. В данном случае "build".
 
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       // Основной виджет.
       title: 'Quiz App',
       theme: ThemeData(primarySwatch: Colors.amber),
-      home: HomePage(),
+      home: MyRowColumn(),
     );
   }
 }
