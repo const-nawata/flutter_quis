@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyRowColumn extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,10 +9,11 @@ class MyRowColumn extends StatelessWidget {
       ),
       body: Container(
         color: Colors.blueGrey,
-        child: Column(
+        child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,  // Выравнивание по поперечной оси.
+          crossAxisAlignment:
+              CrossAxisAlignment.start, // Выравнивание по поперечной оси.
           children: <Widget>[
             ColorBox(),
             BiggerColorBox(),
@@ -25,10 +25,9 @@ class MyRowColumn extends StatelessWidget {
   }
 }
 
-class ColorBox extends StatelessWidget{
+class ColorBox extends StatelessWidget {
   @override
-
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       width: 80,
       height: 80,
@@ -40,18 +39,16 @@ class ColorBox extends StatelessWidget{
   }
 }
 
-class BiggerColorBox extends StatelessWidget{
+class BiggerColorBox extends StatelessWidget {
   @override
-
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 80,
+      width: 80,
+      height: 100,
       decoration: BoxDecoration(
-        color: Colors.redAccent[400],
+        color: Colors.redAccent[100],
         border: Border.all(),
       ),
     );
   }
 }
-
