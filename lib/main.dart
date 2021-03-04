@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quis/row_coolumn.dart';
-import 'package:flutter_quis/my-container.dart';
+import 'package:flutter_quis/my_container.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 void main() {
   debugPaintSizeEnabled = false;
   return runApp(StartApp());
 }
+
 
 /*
   Во flutter все состоит из виджетов.

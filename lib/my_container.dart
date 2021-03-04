@@ -8,7 +8,7 @@ class MyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Theory of Container.'),
+        title: Text('Theory of Container. R'),
       ),
       body: Container(
         width: 200,
