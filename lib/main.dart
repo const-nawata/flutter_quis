@@ -94,7 +94,10 @@ class PersonWidget extends StatelessWidget{
     child: Card(
       margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
       elevation: 5,
-      child: Image.asset(name),
+      child: Image.asset(
+        'asserts/images/Bond0003.jpg',
+        fit: BoxFit.cover,
+      ),
     ),
   );
 }
