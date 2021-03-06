@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quis/row_coolumn.dart';
-import 'package:flutter_quis/my_container.dart';
+// import 'package:flutter_quis/my_flexible.dart';
+// import 'package:flutter_quis/row_coolumn.dart';
+// import 'package:flutter_quis/my_container.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+import 'package:flutter_quis/pages/home_page.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -31,25 +33,10 @@ class StartApp extends StatelessWidget {
     return MaterialApp(
       // Основной виджет.
       title: 'Quiz App',
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: MyContainer(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('First project'),
-      ),
-      body: Container(
-        // Аналог <div></div>
-        child: Center(
-          child: Text('Dummy text edited.'),
-        ),
-      ),
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      // home: MyContainer(),
+      // home: MyFlex(),
+      home: HomePage(),
     );
   }
 }
