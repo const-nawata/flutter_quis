@@ -18,13 +18,6 @@ class BeginApp extends StatelessWidget {
   }
 }
 
-// class FavoriteWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
-
 class FavoriteWidget extends StatefulWidget {
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
@@ -42,7 +35,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
           child: IconButton(
             icon: (_isFavorite ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
             onPressed: _toggleFavorite,
-            color: Colors.red[500],
+            color: (_isFavorite ? Colors.red[500] :  Colors.indigo[300]),
           ),
         ),
         SizedBox(
@@ -57,13 +50,8 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   void _toggleFavorite(){
     setState(() {
-      if(_isFavorite){
-        _isFavorite = false;
-        _favoriteCount -= 1;
-      }else{
-        _isFavorite = true;
-        _favoriteCount += 1;
-      }
+      _isFavorite ? _favoriteCount-- : _favoriteCount++;
+      _isFavorite = !_isFavorite;
     });
   }
 }
@@ -117,7 +105,7 @@ class PersonWidget extends StatelessWidget {
           margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
           elevation: 5,
           child: Image.asset(
-            'asserts/images/Bond0003.jpg',
+            'asserts/images/Bond0006a.jpg',
             fit: BoxFit.cover,
           ),
         ),
