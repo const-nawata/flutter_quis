@@ -1,55 +1,100 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quis/row_coolumn.dart';
-import 'package:flutter_quis/my_container.dart';
-import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
-void main() {
-  debugPaintSizeEnabled = false;
-  return runApp(StartApp());
-}
+main() => runApp(BeginApp());
 
+class BeginApp extends StatelessWidget {
 
-/*
-  Во flutter все состоит из виджетов.
-  Виджеты описывают, как должен выглядеть UI приложения.
-  Виджет -- это обычный класс наследуемый от одного из двух классов:
-    - StatelessWidget
-    - StatefullWidget
-
-  Каждый виджет имеет основной метод: "build", который строит и отрисовывает
-виджет на экране.
-
-* */
-
-class StartApp extends StatelessWidget {
-  @override // переопрдеделение методов. В данном случае "build".
-
+  @override
   Widget build(BuildContext context) {
-//     "context" содержит какую-то мета информацию о виджите, его положении в
-//     дереве виджетов.
-
     return MaterialApp(
-      // Основной виджет.
-      title: 'Quiz App',
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: MyContainer(),
+      title: 'App of STL',
+
+      theme: ThemeData(
+          primarySwatch: Colors.lightGreen
+      ),
+
+      // theme: ThemeData(primarySwatch: Colors.brown),
+
+      home: PersonWidget(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+// class FavoriteWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorite = false;
+  int _favoriteCount = 124;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('Dummy temp text.'),
+    );
+  }
+}
+
+
+
+class PersonWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First project'),
+        title: Text('Favorites Testing'),
       ),
       body: Container(
-        // Аналог <div></div>
-        child: Center(
-          child: Text('Dummy text edited.'),
-        ),
+        child: _buildMainColumn(),
       ),
     );
   }
+
+  Widget _buildMainColumn() => ListView(
+    children: [
+      _buildTopImage(),
+      Center(
+        child: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.all(5),
+                child: Text('Rating'),
+              ),
+              Card(
+                elevation: 5,
+                margin: const EdgeInsets.all(5),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Text('Buttons'),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(5),
+                child: Text('Description'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
+  );
+
+  Widget _buildTopImage() => Container(
+    child: Card(
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      elevation: 5,
+      child: Image.asset(name),
+    ),
+  );
 }
