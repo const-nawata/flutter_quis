@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '';
 
 class MyRowColumn extends StatelessWidget {
   @override
@@ -12,8 +13,9 @@ class MyRowColumn extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment:
-              CrossAxisAlignment.start, // Выравнивание по поперечной оси.
+
+          // Выравнивание по поперечной оси.
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ColorBox(),
             BiggerColorBox(),
@@ -43,11 +45,13 @@ class BiggerColorBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(right: 5.5, left: 5.5),
       width: 80,
       height: 100,
       decoration: BoxDecoration(
         color: Colors.redAccent[100],
-        border: Border.all(),
+        border: Border.all(width: 4.5, color: Color(0xFF55ff55)),
+        borderRadius: const BorderRadius.all(const Radius.circular(10.5)),
       ),
     );
   }

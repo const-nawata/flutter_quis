@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quis/row_coolumn.dart';
-import 'package:flutter_quis/my_container.dart';
-import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+import 'my_container.dart';
+import 'row_coolumn.dart';
 
 void main() {
-  debugPaintSizeEnabled = false;
   return runApp(StartApp());
 }
-
 
 /*
   Во flutter все состоит из виджетов.
   Виджеты описывают, как должен выглядеть UI приложения.
   Виджет -- это обычный класс наследуемый от одного из двух классов:
     - StatelessWidget
-    - StatefullWidget
+    - StatefulWidget
 
   Каждый виджет имеет основной метод: "build", который строит и отрисовывает
 виджет на экране.
@@ -32,7 +29,9 @@ class StartApp extends StatelessWidget {
       // Основной виджет.
       title: 'Quiz App',
       theme: ThemeData(primarySwatch: Colors.amber),
-      home: MyContainer(),
+      // home: HomePage(),
+      // home: MyContainer(),
+      home: MyRowColumn(),
     );
   }
 }
@@ -47,7 +46,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         // Аналог <div></div>
         child: Center(
-          child: Text('Dummy text edited.'),
+          child: Text('Body container.'),
         ),
       ),
     );
