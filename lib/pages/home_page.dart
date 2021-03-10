@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quis/models/Question.dart';
 import 'package:flutter_quis/widgets/answer.dart';
+import 'package:flutter_quis/widgets/progress_bar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +12,24 @@ class _HomePageState extends State<HomePage> {
   final QuestionData data = QuestionData();
   int _countResult = 0;
   int _questionIndex = 0;
+
+  List <Icon> _icons  = [];
+
+  void _clearState() => setState((){
+    _questionIndex  = 0;
+    _countResult    = 0;
+    _icons          = [];
+  });
+
+  void _onChangeAnswer(bool isCorrect) => setState(() {
+    if(isCorrect){
+      _icons.add(Icon(Icons.brightness_1, color: Color(0xFFbd27ff),));
+      _countResult++;
+    }else{
+      _icons.add(Icon(Icons.brightness_1, color: Color(0xFF000000),));
+    }
+    _questionIndex++;
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +46,12 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Column(
           children: <Widget>[
+            ProgressBar(
+              icons: _icons,
+              count: _questionIndex,
+              total: data.questions.length,
+            ),
+
             Container(
               padding: const EdgeInsets.all(10.0),
               child: Text(
@@ -36,17 +61,12 @@ class _HomePageState extends State<HomePage> {
             ),
 
             ...data.questions[_questionIndex].answers.map(
-                (value) => Answer(title: value['answer'],)
+                (value) => Answer(
+                  title: value['answer'],
+                  onChangeAnswer: _onChangeAnswer,
+                  isCorrect: value.containsKey('isCorrect') ? true : false,
+                )
             ).toList(),
-
-
-            ElevatedButton(
-                onPressed: () =>  setState(() {
-                  (_questionIndex < 3) ? _questionIndex++ : _questionIndex = 0;
-                  return _questionIndex;
-                }),
-              child: Text('Next'),
-            )
 
           ],
         ),
