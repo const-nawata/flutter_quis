@@ -13,37 +13,47 @@ class _HomePageState extends State<HomePage> {
   int _countResult = 0;
   int _questionIndex = 0;
 
-  List <Icon> _icons  = [];
+  List<Icon> _icons = [];
 
-  void _clearState() => setState((){
-    _questionIndex  = 0;
-    _countResult    = 0;
-    _icons          = [];
-  });
+  void _clearState() => setState(() {
+        _questionIndex = 0;
+        _countResult = 0;
+        _icons = [];
+      });
 
   void _onChangeAnswer(bool isCorrect) => setState(() {
-    if(isCorrect){
-      _icons.add(Icon(Icons.brightness_1, color: Color(0xFFbd27ff),));
-      _countResult++;
-    }else{
-      _icons.add(Icon(Icons.brightness_1, color: Color(0xFF000000),));
-    }
-    _questionIndex++;
-  });
+        if (isCorrect) {
+          _icons.add(Icon(
+            Icons.brightness_1,
+            color: Color(0xFFbd27ff),
+          ));
+          _countResult++;
+        } else {
+          _icons.add(Icon(
+            Icons.brightness_1,
+            color: Color(0xFF000000),
+          ));
+        }
+        _questionIndex++;
+      });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Testing',style: Theme.of(context).textTheme.caption,),),
+      appBar: AppBar(
+        title: Text(
+          'Testing',
+          style: Theme.of(context).textTheme.caption,
+        ),
+      ),
       body: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
-          color: const Color(0xff2a375a),
-          image: DecorationImage(
-            image: AssetImage('assets/images/Bond0004.jpg'),
-            fit: BoxFit.cover,
-          )
-        ),
+            color: const Color(0xff2a375a),
+            image: DecorationImage(
+              image: AssetImage('assets/images/Bond0004.jpg'),
+              fit: BoxFit.cover,
+            )),
         child: Column(
           children: <Widget>[
             ProgressBar(
@@ -51,23 +61,20 @@ class _HomePageState extends State<HomePage> {
               count: _questionIndex,
               total: data.questions.length,
             ),
-
             Container(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                  data.questions[_questionIndex].title,
+                data.questions[_questionIndex].title,
                 style: Theme.of(context).textTheme.caption,
               ),
             ),
-
-            ...data.questions[_questionIndex].answers.map(
-                (value) => Answer(
-                  title: value['answer'],
-                  onChangeAnswer: _onChangeAnswer,
-                  isCorrect: value.containsKey('isCorrect') ? true : false,
-                )
-            ).toList(),
-
+            ...data.questions[_questionIndex].answers
+                .map((value) => Answer(
+                      title: value['answer'],
+                      onChangeAnswer: _onChangeAnswer,
+                      isCorrect: value.containsKey('isCorrect'), //bool
+                    ))
+                .toList(),
           ],
         ),
       ),

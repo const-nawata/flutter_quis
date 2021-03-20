@@ -28,7 +28,9 @@ class ProgressBar extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           ...icons,
         ],
       ),

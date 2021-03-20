@@ -20,7 +20,6 @@ class QuestionData{
           {'answer': 'Answer 1.3',},
         ]
     ),
-
     Question(
         title: 'Question 2',
         answers: [
@@ -29,7 +28,6 @@ class QuestionData{
           {'answer': 'Answer 2.3',},
         ]
     ),
-
     Question(
         title: 'Question 3',
         answers: [
@@ -38,7 +36,6 @@ class QuestionData{
           {'answer': 'Answer 3.3',},
         ]
     ),
-
     Question(
         title: 'Question 4',
         answers: [
