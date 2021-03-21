@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quis/models/Question.dart';
 import 'package:flutter_quis/widgets/answer.dart';
 import 'package:flutter_quis/widgets/progress_bar.dart';
+import 'package:flutter_quis/widgets/quiz.dart';
+import 'package:flutter_quis/widgets/result.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Icon> _icons = [];
 
-  void _clearState() => setState(() {
+  void _clearState(int dummy) => setState(() {
         _questionIndex = 0;
         _countResult = 0;
         _icons = [];
@@ -37,45 +39,57 @@ class _HomePageState extends State<HomePage> {
         _questionIndex++;
       });
 
+  final whiteTextStyle  = TextStyle(
+    color: Color(0xFFFFFFFF),
+    fontSize: 24,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Testing',
-          style: Theme.of(context).textTheme.caption,
-        ),
-      ),
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
-            color: const Color(0xff2a375a),
-            image: DecorationImage(
-              image: AssetImage('assets/images/Bond0004.jpg'),
-              fit: BoxFit.cover,
-            )),
-        child: Column(
-          children: <Widget>[
-            ProgressBar(
-              icons: _icons,
-              count: _questionIndex,
-              total: data.questions.length,
+
+
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Testing',
+      //     style: Theme.of(context).textTheme.caption,
+      //   ),
+      // ),
+
+
+      body: SafeArea(
+        child: DefaultTextStyle.merge(
+          style: whiteTextStyle,
+          child: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+                color: const Color(0xff2a375a),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/Bond0004.jpg'),
+                  fit: BoxFit.cover,
+                )),
+            child: Column(
+              children: <Widget>[
+                ProgressBar(
+                  icons: _icons,
+                  count: _questionIndex,
+                  total: data.questions.length,
+                ),
+
+                _questionIndex < data.questions.length
+                ? Quiz(
+                  index: _questionIndex,
+                  questionData: data,
+                  onChangeAnswer: _onChangeAnswer,
+                )
+                : Result(
+                    count: _countResult,
+                    total: data.questions.length,
+                    onClearState: _clearState,
+                ),
+              ],
             ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                data.questions[_questionIndex].title,
-                style: Theme.of(context).textTheme.caption,
-              ),
-            ),
-            ...data.questions[_questionIndex].answers
-                .map((value) => Answer(
-                      title: value['answer'],
-                      onChangeAnswer: _onChangeAnswer,
-                      isCorrect: value.containsKey('isCorrect'), //bool
-                    ))
-                .toList(),
-          ],
+          ),
         ),
       ),
     );
