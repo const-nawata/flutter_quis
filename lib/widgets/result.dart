@@ -67,7 +67,7 @@ class Result extends StatelessWidget {
           Divider(
             color: Color(0xFFffffff),
           ),
-          Text('Number of correct answers is $count from $total'),
+          Text('Number of correct answers is $count from $total.'),
           Divider(
             color: Color(0xFFffffff),
           ),

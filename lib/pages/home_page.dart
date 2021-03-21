@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   final whiteTextStyle  = TextStyle(
     color: Color(0xFFFFFFFF),
-    fontSize: 24,
+    fontSize: 20,
   );
 
   @override

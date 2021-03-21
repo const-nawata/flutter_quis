@@ -29,7 +29,11 @@ class MyApp extends StatelessWidget {
 
 */
 
-        textTheme: GoogleFonts.openSansCondensedTextTheme(
+        // textTheme: GoogleFonts.openSansCondensedTextTheme(
+        //   Theme.of(context).textTheme,
+        // ),
+
+        textTheme: GoogleFonts.ubuntuTextTheme(
           Theme.of(context).textTheme,
         ),
 
